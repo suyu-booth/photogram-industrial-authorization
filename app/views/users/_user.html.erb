@@ -29,7 +29,7 @@
           <span class="font-weight-bold">
             <%= user.followers.size %>
           </span>
-          
+
           followers
 
         <% end %>
@@ -47,7 +47,7 @@
           <span class="font-weight-bold">
             <%= user.leaders.size %>
           </span>
-          
+
           following
 
         <% end %>
@@ -55,7 +55,7 @@
 
       <% if user == current_user %>
         <div>
-        <%=
+          <%=
           link_to "#",
             class: "link-underline link-underline-opacity-0 link-underline-opacity-100-hover",
             data: { 
@@ -63,16 +63,16 @@
               "bs-target": "##{dom_id(user)}_pending"
             } do %>
 
-          <span class="font-weight-bold">
-            <%= user.pending.size %>
-          </span>
-          
-          pending
+            <span class="font-weight-bold">
+              <%= user.pending.size %>
+            </span>
 
-        <% end %>
-      </div>
+            pending
+
+          <% end %>
+        </div>
       <% end %>
-      
+
     </div>
 
     <div class="row mb-3">
@@ -150,10 +150,12 @@
     target: "#{dom_id(user)}_following"
 %>
 
-<%=
-  render "users/connected_users_modal",
-    user: user,
-    connected_users: user.pending,
-    description: "pending",
-    target: "#{dom_id(user)}_pending"
-%>
+<% if user == current_user %>
+  <%=
+    render "users/connected_users_modal",
+      user: user,
+      connected_users: user.pending,
+      description: "pending",
+      target: "#{dom_id(user)}_pending"
+  %>
+<% end %>

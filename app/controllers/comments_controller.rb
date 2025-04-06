@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-  before_action :is_an_authorized_user, only: %i[ create]
-  before_action :is_an_authorized_editor, only: %i[destroy edit update]
+  before_action :is_an_authorized_user, only: %i[ create ]
+  before_action :is_an_authorized_editor, only: %i[ destroy edit update ]
 
   # GET /comments or /comments.json
   def index
@@ -79,7 +79,7 @@ class CommentsController < ApplicationController
 
     def is_an_authorized_editor
       if current_user != @comment.author 
-        redirect_back fallback_location: root_url, alert: "Not authorized"
+        redirect_back fallback_location: root_url, alert: "You're not authorized for that"
       end
     end
 end
