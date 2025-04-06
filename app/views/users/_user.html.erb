@@ -53,7 +53,8 @@
         <% end %>
       </div>
 
-      <div>
+      <% if user == current_user %>
+        <div>
         <%=
           link_to "#",
             class: "link-underline link-underline-opacity-0 link-underline-opacity-100-hover",
@@ -70,6 +71,8 @@
 
         <% end %>
       </div>
+      <% end %>
+      
     </div>
 
     <div class="row mb-3">
